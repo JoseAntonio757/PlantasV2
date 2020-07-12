@@ -1,0 +1,60 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+
+  <mat-card class="image-container">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Plata Ruda</mat-card-title>
+      <mat-card-subtitle>Informacion</mat-card-subtitle>
+    </mat-card-header>
+    <img class="imagen-volumen" mat-card-image src="../assets/img/parteB.png" alt="Photo of a Shiba Inu" />
+    <mat-card-content>
+      <p>
+        A small, agile dog that copes very well with mountainous terrain, the
+        Shiba Inu was originally bred for hunting.
+      </p>
+    </mat-card-content>
+
+    <div class="example-button-row">
+      <mat-card-content>
+        <button mat-raised-button style="background:primary" (click)="updateGrid()">
+          CHECK
+        </button>
+      </mat-card-content>
+    </div>
+  </mat-card>
+
+  <div class="list-container">
+    <div class="todo-container column-container">
+      <div class="list-item" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todos"
+        [cdkDropListConnectedTo]="[doneList]" (cdkDropListDropped)="onDrop($event)">
+
+        <mat-card *ngFor="let todo of todos" cdkDrag>
+          <mat-card-header>
+            <mat-card-title>{{ todo.name }}</mat-card-title>
+            <mat-card-subtitle>{{ todo.category }}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </div>
+
+
+
+    <div class="column-container">
+      <div class="list" cdkDropList #doneList="cdkDropList" [cdkDropListData]="completed"
+        [cdkDropListConnectedTo]="todoList" (cdkDropListDropped)="onDrop($event)">
+        <div *ngFor="let complete of completed" cdkDrag width="500" height="620">
+          <mat-card-title>{{ complete.name }}</mat-card-title>
+          <mat-card-subtitle>{{ complete.category }}</mat-card-subtitle>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+
+
